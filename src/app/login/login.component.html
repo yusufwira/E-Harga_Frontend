@@ -1,0 +1,23 @@
+<nb-card>
+  <nb-card-header style="text-align: center"><img src=" assets/img/logo.png"></nb-card-header>
+  <nb-card-body  style="text-align: center">
+  		<h2>Sign In</h2>
+  		<input type="text" nbInput (input)='inputUsername($event)' placeholder="Username"><br><br>
+  		<input type="password" nbInput (input)='inputPassword($event)' placeholder="Password"><br><br><br>
+  		<button  (click)=action(dialog) style="width: 65%;">Sign In</button>
+
+  </nb-card-body>
+</nb-card> 
+
+
+
+<ng-template #dialog let-data let-ref="dialogRef">
+      <nb-card>
+        <nb-card-header style='color: white'>Peringantan</nb-card-header>
+        <nb-card-body>{{ data }}</nb-card-body>
+        <nb-card-footer>
+          <button nbButton (click)="ref.close()" style="background-color: #234a00;">Tutup</button>
+        </nb-card-footer>
+      </nb-card>
+    </ng-template>
+   

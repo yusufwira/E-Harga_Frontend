@@ -1,0 +1,15 @@
+@import '~@nebular/theme/styles/theming';
+@import '~@nebular/theme/styles/themes/default';
+
+
+$nb-themes: nb-register-theme((
+  color-basic-100: white,
+  sidebar-basic-color-1:green,
+  sidebar-width:13rem,
+  select-min-width:20rem,
+
+
+  
+
+ 
+), default, default);

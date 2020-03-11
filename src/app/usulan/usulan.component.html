@@ -1,0 +1,307 @@
+<button nbButton status="danger" routerLink="/usulan/create" *ngIf = 'hak=="Operator OPD"' ><nb-icon icon="plus"> </nb-icon>Tambah Data</button>
+<br>
+<br>
+<nb-accordion *ngIf = 'hak=="Operator OPD"'>
+  <nb-accordion-item>
+    <nb-accordion-item-header>
+      Nama Dan Satuan Baru  <nb-badge text="{{jumlahkat1}}" status="danger"></nb-badge>
+    </nb-accordion-item-header>
+    <nb-accordion-item-body>
+     <nb-card status="danger" *ngFor="let data of data1">
+      <nb-card-header>{{data.nama}}</nb-card-header>
+      <nb-card-body>
+       Dinas : {{data.dinas}} <br>
+       Tipe Usulan : {{data.tipe_usulan}} <br>
+       Nama : {{data.nama}}<br>
+       Spek : {{data.spek}}<br>
+       Satuan : {{data.satuan}}<br>
+       Harga (RP) : {{data.harga}}<br>
+
+       Status : <b *ngIf = 'data.status_admin=="Verivikasi"' style="color: green;">{{data.status_admin}}</b>
+       <b *ngIf = 'data.status_admin=="Tolak"' style="color: red;">{{data.status_admin}}</b>
+        <b *ngIf = 'data.status_admin=="Pending"' style="color: #fb9224;">{{data.status_admin}}</b><br><br>
+       <b style="color: green"> {{data.status_edit}}</b>
+      </nb-card-body>
+      <nb-card-footer>
+      <button nbButton size="small" outline status="primary" (click)="detailUsulan(dialog,data.id)"><nb-icon icon="list"></nb-icon></button>&nbsp; 
+       <button nbButton outline status="info" size="small" *ngIf = 'hak=="Operator OPD" && data.status_admin=="Pending"' routerLink="/usulan/update/{{data.id}}"><nb-icon icon="edit"></nb-icon></button>&nbsp; 
+       <button nbButton  outline status="danger" size="small" *ngIf = 'hak=="Operator OPD" && data.status_admin=="Pending"' (click)="delete(data.id)"><nb-icon icon="trash"></nb-icon></button>&nbsp; 
+      </nb-card-footer>
+    </nb-card>
+    </nb-accordion-item-body>
+  </nb-accordion-item>
+
+  <nb-accordion-item>
+    <nb-accordion-item-header>
+      Nama Ada dan Satuan Baru  <nb-badge text="{{jumlahkat2}}" status="warning"></nb-badge>
+    </nb-accordion-item-header>
+    <nb-accordion-item-body>
+     <nb-card status="warning" *ngFor="let data of data2">
+      <nb-card-header>{{data.nama}}</nb-card-header>
+      <nb-card-body>
+       Dinas : {{data.dinas}} <br>
+       Tipe Usulan : {{data.tipe_usulan}} <br>
+       Nama : {{data.nama}}<br>
+       Spek : {{data.spek}}<br>
+       Satuan : {{data.satuan}}<br>
+       Harga (RP) : {{data.harga}}<br>
+       Status : <b *ngIf = 'data.status_admin=="Verivikasi"' style="color: green;">{{data.status_admin}}</b>
+       <b *ngIf = 'data.status_admin=="Tolak"' style="color: red;">{{data.status_admin}}</b>
+        <b *ngIf = 'data.status_admin=="Pending"' style="color: #fb9224;">{{data.status_admin}}</b><br><br>
+       <b style="color: green"> {{data.status_edit}}</b>
+      </nb-card-body>
+      <nb-card-footer>
+      <button nbButton size="small" outline status="primary" (click)="detailUsulan(dialog,data.id)"><nb-icon icon="list"></nb-icon></button>&nbsp;
+       <button nbButton outline status="info" size="small" *ngIf = 'hak=="Operator OPD" && data.status_admin=="Pending"' routerLink="/usulan/update/{{data.id}}"><nb-icon icon="edit"></nb-icon></button>&nbsp; 
+       <button nbButton  outline status="danger" size="small" *ngIf = 'hak=="Operator OPD" && data.status_admin=="Pending"' (click)="delete(data.id)"><nb-icon icon="trash"></nb-icon></button>&nbsp; 
+      </nb-card-footer>
+    </nb-card>
+    </nb-accordion-item-body>
+  </nb-accordion-item>
+
+  <nb-accordion-item>
+    <nb-accordion-item-header>
+      Sudah Ada di Standard Harga  <nb-badge text="{{jumlahkat3}}" status="success"></nb-badge>
+    </nb-accordion-item-header>
+    <nb-accordion-item-body>
+      <nb-card status="success" *ngFor="let data of data3">
+      <nb-card-header>{{data.nama}}</nb-card-header>
+      <nb-card-body>
+       Dinas : {{data.dinas}} <br>
+       Tipe Usulan : {{data.tipe_usulan}} <br>
+       Nama : {{data.nama}}<br>
+       Spek : {{data.spek}}<br>
+       Satuan : {{data.satuan}}<br>
+       Harga (RP) : {{data.harga}}<br>
+        Status : <b *ngIf = 'data.status_admin=="Verivikasi"' style="color: green;">{{data.status_admin}}</b>
+       <b *ngIf = 'data.status_admin=="Tolak"' style="color: red;">{{data.status_admin}}</b>
+        <b *ngIf = 'data.status_admin=="Pending"' style="color: #fb9224;">{{data.status_admin}}</b><br><br>
+       <b style="color: green"> {{data.status_edit}}</b>
+      </nb-card-body>
+      <nb-card-footer>
+      <button nbButton size="small" outline status="primary" (click)="detailUsulan(dialog,data.id)"><nb-icon icon="list"></nb-icon></button>&nbsp; 
+        <button nbButton outline status="info" size="small" *ngIf = 'hak=="Operator OPD" && data.status_admin=="Pending"' routerLink="/usulan/update/{{data.id}}"><nb-icon icon="edit"></nb-icon></button>&nbsp; 
+       <button nbButton  outline status="danger" size="small" *ngIf = 'hak=="Operator OPD" && data.status_admin=="Pending"' (click)="delete(data.id)"><nb-icon icon="trash"></nb-icon></button>&nbsp; 
+      </nb-card-footer>
+    </nb-card>
+    </nb-accordion-item-body>
+  </nb-accordion-item>
+</nb-accordion>
+
+<!-- ///////////////////////////////////////////////////batas OPD////////////////////////////////////////////////// -->
+
+<nb-accordion *ngIf = 'hak=="Admin OPD"'>
+  <nb-accordion-item>
+    <nb-accordion-item-header>
+      Nama Dan Spek Baru  <nb-badge text="{{jumlahkat1}}" status="danger"></nb-badge>
+    </nb-accordion-item-header>
+    <nb-accordion-item-body>
+     <nb-card status="danger" *ngFor="let data of data1">
+		  <nb-card-header>{{data.nama}}</nb-card-header>
+		  <nb-card-body>
+		   Dinas : {{data.dinas}} <br>
+       Tipe Usulan : {{data.tipe_usulan}} <br>
+		   Nama : {{data.nama}}<br>
+		   Spek : {{data.spek}}<br>
+		   Satuan : {{data.satuan}}<br>
+		   Harga (RP) : {{data.harga}}<br>
+       Status : <b *ngIf = 'data.status_admin=="Verivikasi"' style="color: green;">{{data.status_admin}}</b>
+       <b *ngIf = 'data.status_admin=="Tolak"' style="color: red;">{{data.status_admin}}</b>
+        <b *ngIf = 'data.status_admin=="Pending"' style="color: #fb9224;">{{data.status_admin}}</b><br><br>
+       <b style="color: green"> {{data.status_edit}}</b>
+		  </nb-card-body>
+		  <nb-card-footer>
+			<button nbButton size="small" outline status="primary" (click)="detailUsulan(dialog,data.id)"><nb-icon icon="list"></nb-icon></button>&nbsp; 
+
+			 <button nbButton  outline status="info" size="small" *ngIf = 'hak=="Admin OPD" && data.status_admin=="Pending"' (click)="updateStatus(data.id,'Verivikasi',data.nama)">Verivikasi</button>&nbsp; 
+       <button nbButton  outline status="danger" size="small" *ngIf = 'hak=="Admin OPD" && data.status_admin=="Pending"' (click)="updateStatus(data.id,'Tolak',data.nama)">Tolak</button>&nbsp; 
+
+       <button nbButton outline status="info" size="small" *ngIf ='data.status_admin=="Verivikasi"' routerLink="/usulan/update/{{data.id}}"><nb-icon icon="edit"></nb-icon></button>&nbsp; 
+       <button nbButton  outline status="danger" size="small" *ngIf ='data.status_admin=="Verivikasi"' (click)="delete(data.id)"><nb-icon icon="trash"></nb-icon></button>&nbsp; 
+		  </nb-card-footer>
+		</nb-card>
+    </nb-accordion-item-body>
+  </nb-accordion-item>
+
+  <nb-accordion-item>
+    <nb-accordion-item-header>
+      Nama Ada dan Spek Baru  <nb-badge text="{{jumlahkat2}}" status="warning"></nb-badge>
+    </nb-accordion-item-header>
+    <nb-accordion-item-body>
+     <nb-card status="warning" *ngFor="let data of data2">
+		  <nb-card-header>{{data.nama}}</nb-card-header>
+		  <nb-card-body>
+		   Dinas : {{data.dinas}} <br>
+       Tipe Usulan : {{data.tipe_usulan}} <br>
+		   Nama : {{data.nama}}<br>
+		   Spek : {{data.spek}}<br>
+		   Satuan : {{data.satuan}}<br>
+		   Harga (RP) : {{data.harga}}<br>
+       Status : <b *ngIf = 'data.status_admin=="Verivikasi"' style="color: green;">{{data.status_admin}}</b>
+       <b *ngIf = 'data.status_admin=="Tolak"' style="color: red;">{{data.status_admin}}</b>
+        <b *ngIf = 'data.status_admin=="Pending"' style="color: #fb9224;">{{data.status_admin}}</b><br><br>
+       <b style="color: green"> {{data.status_edit}}</b>
+		  </nb-card-body>
+		  <nb-card-footer>
+			<button nbButton size="small" outline status="primary" (click)="detailUsulan(dialog,data.id)"><nb-icon icon="list"></nb-icon></button>&nbsp; 
+
+			  <button nbButton  outline status="info" size="small" *ngIf = 'hak=="Admin OPD" && data.status_admin=="Pending"' (click)="updateStatus(data.id,'Verivikasi',data.nama)">Verivikasi</button>&nbsp; 
+       <button nbButton  outline status="danger" size="small" *ngIf = 'hak=="Admin OPD" && data.status_admin=="Pending"' (click)="updateStatus(data.id,'Tolak',data.nama)">Tolak</button>&nbsp; 
+
+       <button nbButton outline status="info" size="small" *ngIf ='data.status_admin=="Verivikasi"' routerLink="/usulan/update/{{data.id}}"><nb-icon icon="edit"></nb-icon></button>&nbsp; 
+       <button nbButton  outline status="danger" size="small" *ngIf ='data.status_admin=="Verivikasi"' (click)="delete(data.id)"><nb-icon icon="trash"></nb-icon></button>&nbsp; 
+		  </nb-card-footer>
+		</nb-card>
+    </nb-accordion-item-body>
+  </nb-accordion-item>
+
+  <nb-accordion-item>
+    <nb-accordion-item-header>
+      Sudah Ada di Standard Harga  <nb-badge text="{{jumlahkat3}}" status="success"></nb-badge>
+    </nb-accordion-item-header>
+    <nb-accordion-item-body>
+      <nb-card status="success" *ngFor="let data of data3">
+		  <nb-card-header>{{data.nama}}</nb-card-header>
+		  <nb-card-body>
+		   Dinas : {{data.dinas}} <br>
+       Tipe Usulan : {{data.tipe_usulan}} <br>
+		   Nama : {{data.nama}}<br>
+		   Spek : {{data.spek}}<br>
+		   Satuan : {{data.satuan}}<br>
+		   Harga (RP) : {{data.harga}}<br>
+        Status : <b *ngIf = 'data.status_admin=="Verivikasi"' style="color: green;">{{data.status_admin}}</b>
+       <b *ngIf = 'data.status_admin=="Tolak"' style="color: red;">{{data.status_admin}}</b>
+        <b *ngIf = 'data.status_admin=="Pending"' style="color: #fb9224;">{{data.status_admin}}</b><br><br>
+      <b style="color: green"> {{data.status_edit}}</b>
+		  </nb-card-body>
+		  <nb-card-footer>
+			<button nbButton size="small" outline status="primary" (click)="detailUsulan(dialog,data.id)"><nb-icon icon="list"></nb-icon></button>&nbsp; 
+
+			  <button nbButton  outline status="info" size="small" *ngIf = 'hak=="Admin OPD" && data.status_admin=="Pending"' (click)="updateStatus(data.id,'Verivikasi',data.nama)">Verivikasi</button>&nbsp; 
+       <button nbButton  outline status="danger" size="small" *ngIf = 'hak=="Admin OPD" && data.status_admin=="Pending"' (click)="updateStatus(data.id,'Tolak',data.nama)">Tolak</button>&nbsp; 
+
+       <button nbButton outline status="info" size="small" *ngIf ='data.status_admin=="Verivikasi"' routerLink="/usulan/update/{{data.id}}"><nb-icon icon="edit"></nb-icon></button>&nbsp; 
+       <button nbButton  outline status="danger" size="small" *ngIf ='data.status_admin=="Verivikasi"' (click)="delete(data.id)"><nb-icon icon="trash"></nb-icon></button>&nbsp; 
+		  </nb-card-footer>
+		</nb-card>
+    </nb-accordion-item-body>
+  </nb-accordion-item>
+</nb-accordion>
+
+<!-- ///////////////////////////////////////////////////batas OPD////////////////////////////////////////////////// -->
+
+<nb-accordion *ngIf = 'hak=="Penyusun"'>
+  <nb-accordion-item>
+    <nb-accordion-item-header>
+      Nama Dan Spek Baru  <nb-badge text="{{jumlahkat1}}" status="danger"></nb-badge>
+    </nb-accordion-item-header>
+    <nb-accordion-item-body>
+     <nb-card status="danger" *ngFor="let data of data1">
+      <nb-card-header>{{data.nama}}</nb-card-header>
+      <nb-card-body>
+       Dinas : {{data.dinas}} <br>
+       Tipe Usulan : {{data.tipe_usulan}} <br>
+       Nama : {{data.nama}}<br>
+       Spek : {{data.spek}}<br>
+       Satuan : {{data.satuan}}<br>
+       Harga (RP) : {{data.harga}}<br>
+       Status : <b *ngIf = 'data.status_penyusun=="Verivikasi"' style="color: green;">{{data.status_penyusun}}</b>
+       <b *ngIf = 'data.status_penyusun=="Tolak"' style="color: red;">{{data.status_penyusun}}</b>
+        <b *ngIf = 'data.status_penyusun=="Pending"' style="color: #fb9224;">{{data.status_penyusun}}</b><br><br>
+        <b style="color: green"> {{data.status_edit}}</b>
+      </nb-card-body>
+      <nb-card-footer>
+      <button nbButton size="small" outline status="primary" (click)="detailUsulan(dialog,data.id)"><nb-icon icon="list"></nb-icon></button>&nbsp; 
+
+        <button nbButton  outline status="info" size="small" *ngIf = 'hak=="Penyusun" && data.status_penyusun=="Pending"' (click)="updateStatus(data.id,'Verivikasi',data.nama)">Verivikasi</button>&nbsp; 
+       <button nbButton  outline status="danger" size="small" *ngIf = 'hak=="Penyusun" && data.status_penyusun=="Pending"' (click)="updateStatus(data.id,'Tolak',data.nama)">Tolak</button>&nbsp; 
+
+       <button nbButton outline status="info" size="small" *ngIf ='data.status_penyusun=="Verivikasi"' routerLink="/usulan/update/{{data.id}}"><nb-icon icon="edit"></nb-icon></button>&nbsp; 
+       <button nbButton  outline status="danger" size="small" *ngIf ='data.status_penyusun=="Verivikasi"' (click)="delete(data.id)"><nb-icon icon="trash"></nb-icon></button>&nbsp;  
+      </nb-card-footer>
+    </nb-card>
+    </nb-accordion-item-body>
+  </nb-accordion-item>
+
+  <nb-accordion-item>
+    <nb-accordion-item-header>
+      Nama Ada dan Spek Baru  <nb-badge text="{{jumlahkat2}}" status="warning"></nb-badge>
+    </nb-accordion-item-header>
+    <nb-accordion-item-body>
+     <nb-card status="warning" *ngFor="let data of data2">
+      <nb-card-header>{{data.nama}}</nb-card-header>
+      <nb-card-body>
+       Dinas : {{data.dinas}} <br>
+       Tipe Usulan : {{data.tipe_usulan}} <br>
+       Nama : {{data.nama}}<br>
+       Spek : {{data.spek}}<br>
+       Satuan : {{data.satuan}}<br>
+       Harga (RP) : {{data.harga}}<br>
+       Status : <b *ngIf = 'data.status_penyusun=="Verivikasi"' style="color: green;">{{data.status_penyusun}}</b>
+       <b *ngIf = 'data.status_penyusun=="Tolak"' style="color: red;">{{data.status_penyusun}}</b>
+        <b *ngIf = 'data.status_penyusun=="Pending"' style="color: #fb9224;">{{data.status_penyusun}}</b><br><br>
+       <b style="color: green"> {{data.status_edit}}</b>
+      </nb-card-body>
+      <nb-card-footer>
+      <button nbButton size="small" outline status="primary" (click)="detailUsulan(dialog,data.id)"><nb-icon icon="list"></nb-icon></button>&nbsp; 
+
+      <button nbButton  outline status="info" size="small" *ngIf = 'hak=="Penyusun" && data.status_penyusun=="Pending"' (click)="updateStatus(data.id,'Verivikasi',data.nama)">Verivikasi</button>&nbsp; 
+       <button nbButton  outline status="danger" size="small" *ngIf = 'hak=="Penyusun" && data.status_penyusun=="Pending"' (click)="updateStatus(data.id,'Tolak',data.nama)">Tolak</button>&nbsp; 
+
+       <button nbButton outline status="info" size="small" *ngIf ='data.status_penyusun=="Verivikasi"' routerLink="/usulan/update/{{data.id}}"><nb-icon icon="edit"></nb-icon></button>&nbsp; 
+       <button nbButton  outline status="danger" size="small" *ngIf ='data.status_penyusun=="Verivikasi"' (click)="delete(data.id)"><nb-icon icon="trash"></nb-icon></button>&nbsp; 
+      </nb-card-footer>
+    </nb-card>
+    </nb-accordion-item-body>
+  </nb-accordion-item>
+
+  <nb-accordion-item>
+    <nb-accordion-item-header>
+      Sudah Ada di Standard Harga  <nb-badge text="{{jumlahkat3}}" status="success"></nb-badge>
+    </nb-accordion-item-header>
+    <nb-accordion-item-body>
+      <nb-card status="success" *ngFor="let data of data3">
+      <nb-card-header>{{data.nama}}</nb-card-header>
+      <nb-card-body>
+       Dinas : {{data.dinas}} <br>
+       Tipe Usulan : {{data.tipe_usulan}} <br>
+       Nama : {{data.nama}}<br>
+       Spek : {{data.spek}}<br>
+       Satuan : {{data.satuan}}<br>
+       Harga (RP) : {{data.harga}}<br>
+       Status : <b *ngIf = 'data.status_penyusun=="Verivikasi"' style="color: green;">{{data.status_penyusun}}</b>
+       <b *ngIf = 'data.status_penyusun=="Tolak"' style="color: red;">{{data.status_penyusun}}</b>
+        <b *ngIf = 'data.status_penyusun=="Pending"' style="color: #fb9224;">{{data.status_penyusun}}</b><br><br>
+        <b style="color: green"> {{data.status_edit}}</b>
+      </nb-card-body>
+      <nb-card-footer>
+      <button nbButton size="small" outline status="primary" (click)="detailUsulan(dialog,data.id)"><nb-icon icon="list"></nb-icon></button>&nbsp; 
+       <button nbButton  outline status="info" size="small" *ngIf = 'hak=="Penyusun" && data.status_penyusun=="Pending"' (click)="updateStatus(data.id,'Verivikasi',data.nama)">Verivikasi</button>&nbsp; 
+       <button nbButton  outline status="danger" size="small" *ngIf = 'hak=="Penyusun" && data.status_penyusun=="Pending"' (click)="updateStatus(data.id,'Tolak',data.nama)">Tolak</button>&nbsp; 
+
+       <button nbButton outline status="info" size="small" *ngIf ='data.status_penyusun=="Verivikasi"' routerLink="/usulan/update/{{data.id}}"><nb-icon icon="edit"></nb-icon></button>&nbsp; 
+       <button nbButton  outline status="danger" size="small" *ngIf ='data.status_penyusun=="Verivikasi"' (click)="delete(data.id)"><nb-icon icon="trash"></nb-icon></button>&nbsp; 
+      </nb-card-footer>
+    </nb-card>
+    </nb-accordion-item-body>
+  </nb-accordion-item>
+</nb-accordion>
+
+
+<ng-template #dialog let-data let-ref="dialogRef">
+      <nb-card >
+        <nb-card-header>Detai Data Usulan</nb-card-header>
+        <nb-card-body>
+                      Tipe : {{tipe}}                     
+                      Nama: {{nama}} <br>
+                      Merk : {{merk}} <br>
+                      Spek : {{spek}} <br>
+                      Satuan : {{satuan}}<br>
+                      Harga : {{harga}}<br>
+                      Dinas : {{dinas}}<br><br>                      
+                    </nb-card-body>
+        <nb-card-footer>
+          <button nbButton (click)="ref.close()">Close</button>
+        </nb-card-footer>
+      </nb-card>
+    </ng-template>

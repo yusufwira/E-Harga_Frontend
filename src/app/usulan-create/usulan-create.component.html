@@ -1,0 +1,55 @@
+ <nb-card status="primary">
+ 	  <nb-card-header>Tambah Usulan</nb-card-header>
+      <nb-card-body class="example-items-rows">
+      	Tipe Usulan :
+        <nb-select  placeholder="Pilih Usulan"  [(selected)]="tipeValue">
+	      <nb-option value="SSH">(SSH) Standard Satuan Harga</nb-option>
+	      <nb-option value="SBU">(SBU) Standard Biaya Umum</nb-option>
+	      <nb-option value="HSPK">(HSPK) Harga Satuan Pokok Kegiatan</nb-option>
+	      <nb-option value="ASB">(ASB) Analisis Standard Belanja</nb-option>	      
+	    </nb-select>
+	    <br>
+	    <br>
+        Nama : 
+        <nb-select  placeholder='pilih nama' (click)="selectedNama(tipeValue)" [(selected)]="namaValue">
+	      <nb-option *ngFor="let data of datas" value="{{data.nama}}">{{data.nama}}</nb-option>
+	      <nb-option value="Belum">Nama Baru</nb-option>	  	      
+	    </nb-select>
+	    <br>
+	    <input type="text" nbInput  (input)='inputNama($event)' *ngIf="namaValue=='Belum'" placeholder="Masukan Nama"><br><br>
+
+        Merk : <input type="text" nbInput style="width: 400px;" placeholder="input merk" (input)='inputMerk($event)'><br><br>
+        Spek : <input type="text" nbInput style="width: 400px;" placeholder="input spek" (input)='inputSpek($event)'><br><br>
+        Satuan : 
+         <nb-select  placeholder='pilih satuan' (click)="selectedTipe(tipeValue)"  [(selected)]="satuanValue">
+	      <nb-option *ngFor="let data of datasatuan" value="{{data}}">{{data}}</nb-option>
+	      <nb-option value="Belum">Satuan Baru</nb-option>	  	      
+	    </nb-select><br>
+	    <input type="text" nbInput (input)='inputSatuan($event)' *ngIf="satuanValue=='Belum'" placeholder="Masukan Satuan Baru"><br><br>
+	     Harga : <input type="number" nbInput style="width: 400px;" placeholder="input harga" (input)='inputHarga($event)'>{{hargas}}
+	     <br><br>
+        Refrensi : <input type="text" nbInput style="width: 400px;" placeholder="input Refrensi" (input)='inputRefrensi($event)'><br><br><br>
+        Upload File :
+         <input type="file" status="info" nbButton name="file_usulanbaru[]"
+                    multiple (change)="handleFileDokumen($event.target.files)">
+        <p style="color: red">*file opsioanal</p>
+      </nb-card-body>
+ </nb-card>
+
+<button nbButton status="primary" (click)=action(dialog)>Save</button>&nbsp;  
+<button nbButton status="warning" routerLink="/usulan">Cancel</button>
+
+<ng-template #dialog let-data let-ref="dialogRef">
+      <nb-card status='warning'>
+        <nb-card-header>KESALAHAN DATA</nb-card-header>
+        <nb-card-body>Data yang anda masukan kurang lengkap
+                    </nb-card-body>
+        <nb-card-footer>
+          
+          <button nbButton status='primary' (click)="ref.close()">Cancel</button>
+        </nb-card-footer>
+      </nb-card>
+    </ng-template>
+
+
+

@@ -1,0 +1,74 @@
+
+
+
+<nb-accordion *ngIf='akses'>
+ <nb-accordion-item>
+  <nb-accordion-item-header status="info">         
+    Settting Pengumuman
+  </nb-accordion-item-header>
+  <nb-accordion-item-body>
+  	<nb-card accent="primary" status="info">
+	  <nb-card-header>Set Pengumuman Dashboard</nb-card-header>
+	  <nb-card-body>
+	  	set pengumuman :
+	  	<br>
+	  	<br>
+	  	<textarea nbInput style="width: 95%; height: 200px" (input)='inputPengumuman($event)'>{{pengumuman}}</textarea>
+	  </nb-card-body>
+
+	</nb-card> 
+	<br>
+	<button style="width: 300px; margin-left: 40px;" nbButton status="primary" (click)='action()' routerLink="/home">Save</button>  
+    
+  </nb-accordion-item-body>
+  </nb-accordion-item>
+</nb-accordion>
+
+<nb-accordion *ngIf='akses'>
+ <nb-accordion-item>
+  <nb-accordion-item-header status="info">         
+    Daftar Admin
+  </nb-accordion-item-header>
+  <nb-accordion-item-body>
+  	<button nbButton status="primary" size='small' routerLink="/user/create"><nb-icon icon="plus"> </nb-icon>Tambah Admin</button><br><br>
+  </nb-accordion-item-body>
+  <nb-accordion-item-body>
+
+  	 <nb-card *ngFor="let data of dataAdmin;">
+	  <nb-card-body>
+	    <nb-user size="large"
+	             name={{data.nama}}
+	             title={{data.dinas}}
+	             >
+	    </nb-user>
+
+	  </nb-card-body>
+	</nb-card>
+
+  </nb-accordion-item-body>
+  </nb-accordion-item>
+</nb-accordion>
+
+
+<nb-accordion >
+ <nb-accordion-item>
+  <nb-accordion-item-header status="info">         
+    Daftar Operator
+  </nb-accordion-item-header>
+  <nb-accordion-item-body>
+  		<button nbButton status="primary" size='small' routerLink="/user/create" *ngIf='!akses'><nb-icon icon="plus" > </nb-icon>Tambah Operator</button><br><br>
+
+
+  	 <nb-card *ngFor="let data of dataOperator;">
+	  <nb-card-body>
+	    <nb-user size="giant"
+	             name={{data.nama}}
+	             title={{data.dinas}}>
+	    </nb-user>
+	  </nb-card-body>
+	</nb-card>
+
+  </nb-accordion-item-body>
+  </nb-accordion-item>
+</nb-accordion>
+

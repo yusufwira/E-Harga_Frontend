@@ -1,0 +1,34 @@
+
+<nb-card status="info" style='text-align: center'>
+  <nb-card-header>HSPK</nb-card-header>
+  <nb-card-body>
+  <input type="text" placeholder="Cari Data" nbInput (input)='search($event)' style="width: 500px;"><br><br>
+  </nb-card-body>  
+</nb-card>
+
+<button nbButton status="primary" routerLink="/hspk/create" *ngIf='hak'><nb-icon icon="plus"> </nb-icon>Tambah Data</button><br>
+<br>
+
+<!-- <nb-list nbInfiniteList [threshold]="500" (bottomThreshold)="loadNext()">
+   <nb-list-item *ngFor="let item of items">
+   
+     
+   </nb-list-item>
+ </nb-list> -->
+
+
+  <nb-card status="info" *ngFor="let data of datas; index as i">
+    <nb-card-header>{{data.nama}}</nb-card-header>
+    <nb-card-body>
+      Kode : {{data.kode}} <br>
+      Nama : {{data.nama}} <br>
+      Satuan : {{data.satuan}}<br> 
+      harga :{{subtotal[i]}}
+    </nb-card-body>
+    <nb-card-footer>
+    <button nbButton size="small" status="primary" routerLink="/hspk/detail/{{data.id}}"><nb-icon icon="list"></nb-icon></button>&nbsp; 
+    <button nbButton size="small" *ngIf='hak' status="success"  routerLink="/hspk/update/{{data.id}}"><nb-icon icon="edit"></nb-icon></button>&nbsp; 
+    <button nbButton size="small" *ngIf='hak' status="danger" (click)="DeleteHspk(data.id)"><nb-icon icon="trash"></nb-icon></button>&nbsp; 
+    </nb-card-footer>
+  </nb-card>
+

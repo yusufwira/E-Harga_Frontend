@@ -1,0 +1,100 @@
+<nb-card accent="primary" status="danger">
+  <nb-card-header>Pengumuman</nb-card-header>
+  <nb-card-body>
+  	<p style="color: red">
+  		{{pengumuman}}
+   </p>
+  </nb-card-body>
+</nb-card> 
+
+<nb-reveal-card>
+  <nb-card-front>
+    <nb-card status="primary">
+      <nb-card-header>  Selamat Siang , Anda masuk sebagai User {{hak_akses}}</nb-card-header>
+      <nb-card-body>
+        Disini Anda dapat melihat Standar Satuan Harga (SSH), Harga Satuan Pokok Kegiatan (HSPK), dan Analisis Standar Belanja (ASB) dari Pemerintah Kota. Malalui tab dibawah
+      </nb-card-body>
+    </nb-card>
+  </nb-card-front>
+  <nb-card-back>
+    <nb-card status="success">
+      <nb-card-header>  Selamat Siang , Anda masuk sebagai User Umum</nb-card-header>
+      <nb-card-body>
+        Apabila Anda adalah SKPD anda dapat mengusulkan kegiatan dalam proses musrenbang ini melalui login pada form sebelah kanan.
+      </nb-card-body>
+    </nb-card>
+  </nb-card-back>
+</nb-reveal-card>
+
+
+
+<nb-card accent="primary" >
+  <nb-card-header>Data SBU</nb-card-header>
+  <nb-card-body>
+    <div style="display: block">
+      <canvas baseChart
+        [data]="sbuChartData"
+        [labels]="doughnutChartLabels"
+        [chartType]="doughnutChartType"
+        [colors]="chartColors">
+      </canvas>
+    </div>
+  </nb-card-body>
+</nb-card> 
+
+<nb-card accent="primary" >
+  <nb-card-header>Data SSH</nb-card-header>
+  <nb-card-body>
+    <div style="display: block">
+      <canvas baseChart
+        [data]="sshChartData"
+        [labels]="doughnutChartLabels"
+        [chartType]="doughnutChartType"
+        [colors]="chartColors">
+      </canvas>
+    </div>
+  </nb-card-body>
+</nb-card> 
+
+<nb-card accent="primary" >
+  <nb-card-header>Data HSPK</nb-card-header>
+  <nb-card-body>
+    <div style="display: block">
+      <canvas baseChart
+        [data]="hspkChartData"
+        [labels]="doughnutChartLabels"
+        [chartType]="doughnutChartType"
+        [colors]="chartColors">
+      </canvas>
+    </div>
+  </nb-card-body>
+</nb-card> 
+
+<nb-card accent="primary" >
+  <nb-card-header>Data ASB</nb-card-header>
+  <nb-card-body>
+    <div style="display: block">
+      <canvas baseChart
+        [data]="asbChartData"
+        [labels]="doughnutChartLabels"
+        [chartType]="doughnutChartType"
+        [colors]="chartColors">
+      </canvas>
+    </div>
+  </nb-card-body>
+</nb-card> 
+
+
+<nb-card accent="primary" >
+  <nb-card-header>Data Usulan</nb-card-header>
+  <nb-card-body>
+    <div style="display: block">
+      <canvas baseChart
+        [data]="usulanChartData"
+        [labels]="doughnutChartLabels"
+        [chartType]="doughnutChartType"
+        [colors]="chartColors">
+      </canvas>
+    </div>
+  </nb-card-body>
+</nb-card> 

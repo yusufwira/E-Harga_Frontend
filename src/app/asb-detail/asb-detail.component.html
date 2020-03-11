@@ -1,0 +1,72 @@
+<nb-card status="success" >
+  <nb-card-header style='font-size: 25px'>Detail Data ASB</nb-card-header>
+
+  <nb-card-body><b style='font-size: 19px'>
+     <br>
+  	Kode : {{Kode}} <br><br>
+  	Nama : {{Nama}} <br><br>
+  	Satuan : {{Satuan}}<br><br>   
+    Harga Total : {{subtotal}}</b><br><br>
+<br><br>
+    <nb-accordion>
+ <nb-accordion-item>
+  <nb-accordion-item-header>
+   
+    Bahan
+  </nb-accordion-item-header>
+  <nb-accordion-item-body *ngFor="let ssh of datassh" >
+    <b>Komponen : {{ssh.nama}}<br>
+    Satuan : {{ssh.satuan}}<br>
+    Harga Satuan : {{ssh.harga_final}}<br>
+    Jumlah  : {{ssh.jumlah}}<br>
+    Harga Total : {{ssh.ssh_id}}</b>
+  </nb-accordion-item-body>
+  <nb-accordion-item-body>
+    <b>Total Harga Bahan : {{totalssh}}</b> <br>
+  </nb-accordion-item-body>
+ </nb-accordion-item>
+</nb-accordion>
+
+<nb-accordion>
+ <nb-accordion-item>
+  <nb-accordion-item-header>Kegiatan</nb-accordion-item-header>
+  <nb-accordion-item-body *ngFor="let hspk of datahspk">
+    <b>Komponen : {{hspk.nama}}<br>
+    Satuan : {{hspk.satuan}}<br>
+    Harga Satuan  : {{hspk.harga_total}}<br>
+    Jumlah  : {{hspk.jumlah}}<br>
+    Harga Total : {{hspk.hspk_id}}</b>
+  </nb-accordion-item-body>
+  <nb-accordion-item-body>
+    <b>Total Harga Tenaga Kerja : {{totalhspk}} </b><br>
+    
+  </nb-accordion-item-body>
+ </nb-accordion-item>
+</nb-accordion>
+
+<nb-accordion>
+ <nb-accordion-item>
+  <nb-accordion-item-header>Total Harga</nb-accordion-item-header>
+  
+<nb-accordion-item-body>
+    <b>
+    Sub Total : {{subtotal}}</b><br>
+  </nb-accordion-item-body>
+
+ </nb-accordion-item>
+</nb-accordion>
+  </nb-card-body>
+
+</nb-card>
+
+<button nbButton status="success" routerLink="/asb/update/{{idparam}}" style="width: 100px; margin-left: 70px;">Edit</button> &nbsp;  
+<button nbButton status="warning" routerLink="/asb">Cancel</button>
+
+
+
+
+
+
+
+
+

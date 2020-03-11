@@ -1,0 +1,62 @@
+ <nb-card status="info">
+ 	  <nb-card-header>Update ASB</nb-card-header>
+      <nb-card-body class="example-items-rows">
+        Kode : <input  type="text" nbInput placeholder="Cth: 01.01.01" (input)='inputKode($event)' value="{{kode}}"><br><br>
+        Nama : <input type="text" nbInput (input)='inputNama($event)' value="{{nama}}"><br><br>
+        Satuan : <input type="text" nbInput (input)='inputSatuan($event)' value="{{satuan}}"><br><br>       
+        Tag Pencarian : <input type="text" nbInput placeholder="Cth: alat tulis, kantor, rapat, dll" (input)='inputTag($event)' value="{{tag}}"><br><br>
+      </nb-card-body>
+ </nb-card>
+
+
+<nb-accordion >
+ <nb-accordion-item>
+  <nb-accordion-item-header status="info">         
+    Bahan
+  </nb-accordion-item-header>
+  <nb-accordion-item-body>
+    <button nbButton size="small" status="primary" routerLink="/asb/ssh/{{idparam}}"><nb-icon icon="plus"></nb-icon> Tambah Komponen Bahan</button>
+  </nb-accordion-item-body>
+  
+ <nb-accordion-item-body style="border-bottom: 1px solid grey" *ngFor="let ssh of datassh; let i = index">
+    		<b style="font-size: 19px">{{ssh.nama}}</b>
+    		<br>
+    		Kode : {{ssh.kode}}<br>
+		    Satuan : {{ssh.satuan}}<br>
+		    Harga Satuan : {{ssh.harga_final}}<br>
+		    Jumlah : <input  type="number" nbInput placeholder="qty" (input)='inputJumlahSSH($event)'  style="width: 65px;" value="{{ssh.jumlah}}"><br><br>
+		    <button nbButton size="small" status="info" (click)='pilihSSH(ssh.id)'>Save</button>&nbsp;
+		    <button nbButton size="small" status="danger"><nb-icon icon="trash"></nb-icon></button>
+ </nb-accordion-item-body>
+ </nb-accordion-item>
+</nb-accordion>
+<br><br>
+
+
+<nb-accordion >
+ <nb-accordion-item>
+  <nb-accordion-item-header status="info">Kegiatan</nb-accordion-item-header>
+  <nb-accordion-item-body>
+    <button nbButton size="small" status="primary" routerLink="/asb/hspk/{{idparam}}"><nb-icon icon="plus"></nb-icon> Tambah Komponen Kegiatan</button>
+  </nb-accordion-item-body>
+  
+ <nb-accordion-item-body style="border-bottom: 1px solid grey" *ngFor="let hspk of datahspk">
+    		<b style="font-size: 19px">{{hspk.nama}}</b>
+    		<br>
+    		Kode : {{hspk.kode}}<br>
+		    Satuan : {{hspk.satuan}}<br>
+		    Harga Satuan : {{hspk.harga_total}}<br>
+		    Jumlah : <input  type="number" nbInput placeholder="qty"  (input)='inputJumlahHSPK($event)'  style="width: 65px;" value="{{hspk.jumlah}}"><br><br>
+		    <button nbButton size="small" status="info" (click)='pilihHSPK(hspk.id)'>Save</button>&nbsp;
+		    <button nbButton size="small" status="danger"><nb-icon icon="trash"></nb-icon></button> 
+ </nb-accordion-item-body>
+ </nb-accordion-item>
+</nb-accordion>
+
+<br><br>
+
+<button nbButton status="primary" (click)=updateASB() style="width: 100px">Save</button> &nbsp;  
+<button nbButton status="warning" routerLink="/hspk">Cancel</button>
+
+ 
+

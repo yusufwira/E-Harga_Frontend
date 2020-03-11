@@ -1,0 +1,90 @@
+ <nb-card status="info">
+ 	  <nb-card-header>Update SSH</nb-card-header>
+      <nb-card-body class="example-items-rows">
+        Kode : <input  type="text" nbInput placeholder="Cth: 01.01.01" (input)='inputKode($event)' value="{{kode}}"><br><br>
+        Nama : <input type="text" nbInput (input)='inputNama($event)' value="{{nama}}"><br><br>
+        Merk : <input type="text" nbInput (input)='inputMerk($event)' value="{{merk}}"><br><br>
+        Spek : <input type="text" nbInput (input)='inputSpek($event)' value="{{spek}}"><br><br>
+        Satuan : <input type="text" nbInput (input)='inputSatuan($event)' value="{{satuan}}"><br><br>
+        Tag Pencarian : <input type="text" nbInput placeholder="Cth: alat tulis, kantor, rapat, dll" (input)='inputTag($event)' value="{{tag}}"><br><br>
+      </nb-card-body>
+ </nb-card>
+
+  <nb-card>
+  	<nb-card-header>Survey 1</nb-card-header>
+  	<nb-card-body class="example-items-rows">
+      Nama Toko : <input type="text" nbInput (input)='inputNamaS1($event)' value="{{namaTokoS1}}"><br><br>
+      Merk :<br> <input type="text" nbInput (input)='inputMerkS1($event)' value="{{merkS1}}"><br><br>
+  		Harga Survey 1 : <input type="number" (input)="convertSurvey1($event)" nbInput  value="{{hargaS1}}"><br>{{hsurvey1}}<br><br>
+  		Keterangan : <input type="text" nbInput (input)='inputKeteranganS1($event)' value="{{KeteranganS1}}"><br><br>
+  	</nb-card-body>
+  </nb-card>
+
+ <nb-card>
+  	<nb-card-header>Survey 2</nb-card-header>
+  	<nb-card-body class="example-items-rows">
+      Nama Toko : <input type="text" nbInput (input)='inputNamaS2($event)' value="{{namaTokoS2}}"><br><br>
+      Merk :<br> <input type="text" nbInput (input)='inputMerkS2($event)' value="{{merkS2}}"><br><br>
+  		Harga Survey 2 : <input type="number" (input)="convertSurvey2($event)" nbInput value="{{hargaS2}}"><br>{{hsurvey2}}<br><br>
+  		Keterangan : <input type="text" nbInput (input)='inputKeteranganS2($event)' value="{{KeteranganS2}}"><br><br>
+  	</nb-card-body>
+  </nb-card>
+
+   <nb-card>
+  	<nb-card-header>Survey 3</nb-card-header>
+  	<nb-card-body class="example-items-rows">
+      Nama Toko : <input type="text" nbInput (input)='inputNamaS3($event)' value="{{namaTokoS3}}"><br><br>
+      Merk :<br> <input type="text" nbInput (input)='inputMerkS3($event)' value="{{merkS3}}"><br><br>
+  		Harga Survey 3 : <input type="number" (input)="convertSurvey3($event)" nbInput value="{{hargaS3}}"><br>{{hsurvey3}}<br><br>
+  		Keterangan : <input type="text" nbInput (input)='inputKeteranganS3($event)' value="{{KeteranganS3}}"><br><br>
+  	</nb-card-body>
+  </nb-card>
+
+ <nb-card>
+  	<nb-card-header>Survey 4</nb-card-header>
+  	<nb-card-body class="example-items-rows">
+      Nama Toko : <input type="text" nbInput (input)='inputNamaS4($event)' value="{{namaTokoS4}}"><br><br>
+      Merk :<br> <input type="text" nbInput (input)='inputMerkS4($event)' value="{{merkS4}}"><br><br>
+  		Harga Survey 4 : <input type="number" (input)="convertSurvey4($event)" nbInput value="{{hargaS4}}"><br>{{hsurvey4}}<br><br>
+  		Keterangan : <input type="text" nbInput (input)='inputKeteranganS4($event)'value="{{KeteranganS4}}"><br><br>
+  	</nb-card-body>
+  </nb-card>
+
+ <nb-card>
+  	
+  	<nb-card-body class="example-items-rows">
+  		Harga Terendah ={{hTerendah}} <br>
+  		Harga Tertinggi = {{hTertinggi}}<br>
+  		Harga Rata-rata = {{hRatarata}}<br>
+  		<nb-checkbox (checkedChange)="inflansi($event)">0% Inflansi</nb-checkbox><br>
+  		<nb-checkbox (checkedChange)="ppn($event)">0% PPN</nb-checkbox><br>
+  		<nb-checkbox (checkedChange)="keuntungan($event)">0% keuntungan</nb-checkbox><br>
+  	</nb-card-body>
+  </nb-card>
+
+
+  <nb-card status="success">
+  	<nb-card-header>Harga Final</nb-card-header>
+  	<nb-card-body class="example-items-rows">
+  		Harga final : <input type="number" (input)="convertSurveyfinal($event)" nbInput value="{{hargaFinal}}"><br>{{hsurveyfinal}}<br><br>
+  		Alasan : <input type="text" nbInput (input)="inputAlasan($event)" value="{{alasan}}"><br><br>
+  	</nb-card-body>
+  </nb-card>
+
+<button nbButton status="primary" (click)=action(dialog)>Save</button>   
+<button nbButton status="warning" routerLink="/ssh/">Cancel</button>
+
+<ng-template #dialog let-data let-ref="dialogRef">
+      <nb-card status='warning'>
+        <nb-card-header>KESALAHAN DATA</nb-card-header>
+        <nb-card-body>Terjadi kesalahan pada penginputan data
+                    </nb-card-body>
+        <nb-card-footer>
+          
+          <button nbButton status='primary' (click)="ref.close()">Cancel</button>
+        </nb-card-footer>
+      </nb-card>
+    </ng-template>
+
+
+

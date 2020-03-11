@@ -1,0 +1,59 @@
+
+<div *ngIf='!hak'>
+  <nb-card  status="warning" >
+  <nb-card-header>Tambah File</nb-card-header>
+  <nb-card-body style="text-align: center;">
+     <b>Nama Berkas</b> <br><br> <input type="text" nbInput (input)='namaBerkas($event)' accent="primary" placeholder="Input Nama Berkas"><br><br>
+     <div class="form-group" style="border: 1px solid; border-color: #FF8630; border-radius: 10px;">
+      <b>Pilih Berkas</b> <br><br>
+      <input type="file" status="info" nbButton name="file_transaksi[]"
+                    multiple (change)="handleFileDokumen($event.target.files)">
+     </div>
+     <br><br>
+     <button nbButton status="info" (click)="action(dialog)" style="width: 300px;">Upload File</button>
+
+  </nb-card-body>
+</nb-card>   
+</div>
+
+<div *ngIf='!hak'>
+  <nb-card  accent="default" status="danger" *ngFor="let data of detaildata" >
+  <nb-card-header></nb-card-header>
+  <nb-card-body>      
+      Nama Berkas : {{data.nama_berkas}}<br>
+      Jumlah Berkas : {{data.jumlah_berkas}}<br>
+      <br>
+  </nb-card-body>
+</nb-card>  
+</div>
+
+<div *ngIf='hak || penyusun'>
+  <nb-card  accent="default" status="danger" *ngFor="let data of datas" >
+  <nb-card-header></nb-card-header>
+  <nb-card-body>      
+      Nama : {{data.nama_berkas}}<br>
+      Jumlah Berkas : {{data.jumlah_berkas}}<br>
+      Status :{{data.status}}<br>
+  </nb-card-body>
+   <nb-card-footer>
+   <button nbButton shape="semi-round" outline status="info" size="small" (click)="verivikasi(data.idsurat,'Verivikasi')">Verivikasi</button>&nbsp; 
+    <button nbButton shape="semi-round" outline status="danger" size="small" (click)="verivikasi(data.idsurat,'Tolak')">Tolak</button>&nbsp; 
+  <button nbButton shape="semi-round" outline status="warning" size="small"
+                (click)="downloadFileUsulan(data.users_id,data.surat_usulan_id,data.nama_file)">Download</button>
+  </nb-card-footer>
+</nb-card>  
+</div>
+
+<ng-template #dialog let-data let-ref="dialogRef">
+      <nb-card status='Success'>
+        <nb-card-header >Success</nb-card-header>
+        <nb-card-body>{{ data }}</nb-card-body>
+        <nb-card-footer>
+          <button nbButton (click)="ref.close()" style="background-color: #234a00;">Tutup</button>
+        </nb-card-footer>
+      </nb-card>
+    </ng-template>
+
+
+
+

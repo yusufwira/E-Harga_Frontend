@@ -1,0 +1,25 @@
+<nb-card accent="primary">
+<nb-card-header>Update Profile</nb-card-header>
+  <nb-card-body style="text-align: center" >
+  	<img src="https://d2x5ku95bkycr3.cloudfront.net/App_Themes/Common/images/profile/0_200.png">
+  	<br>
+  	<br>
+  	Nama <br> <br> <input type="text" nbInput (input)="inputNama($event)"  value="{{nama}}"><br><br>
+  	Email <br> <br> <input type="text" nbInput  (input)="inputEmail($event)" value="{{email}}"><br><br>
+  	NoTelp <br> <br> <input type="text" nbInput (input)="inputNotelp($event)" value="{{notelp}}"><br><br>
+  	
+  	<nb-card-footer><br><br><button nbButton status="info" (click)="action(dialog)" style="width: 200px">Save Change</button></nb-card-footer>
+  </nb-card-body>
+</nb-card>
+
+
+<ng-template #dialog let-data let-ref="dialogRef">
+      <nb-card>
+        <nb-card-header>Error</nb-card-header>
+        <nb-card-body>{{ data }}</nb-card-body>
+        <nb-card-footer>
+          <button nbButton (click)="ref.close()" style="background-color: #234a00;">Tutup</button>
+        </nb-card-footer>
+      </nb-card>
+    </ng-template>
+

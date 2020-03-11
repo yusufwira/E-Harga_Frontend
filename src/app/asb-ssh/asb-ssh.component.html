@@ -1,0 +1,19 @@
+<nb-card size="giant">
+      <nb-card-header>
+       <input  type="text" nbInput placeholder="Search" style="width: 300px; margin-left: 20px">
+      </nb-card-header>
+      <nb-list>
+        <nb-list-item *ngFor="let ssh of datas">
+          	<b style="font-size: 19px">{{ssh.nama}}</b>
+    		<br>
+    		Kode : {{ssh.kode}}<br>
+		    Satuan : {{ssh.satuan}}<br>
+		    Harga Satuan : {{ssh.harga_final}}<br>
+		    Jumlah : <input  type="number" nbInput placeholder="qty" (input)='inputJumlahSSH($event)'  style="width: 65px;" ><br><br>
+		    <button nbButton size="small" status="info" (click)='pilihSSH(ssh.id)'>pilih</button>&nbsp;
+        </nb-list-item>
+      </nb-list>
+    </nb-card>
+
+<button nbButton status="primary" (click)=postAsbSsh() routerLink="/asb/update/{{idparam}}" style="width: 100px">Save</button> &nbsp;  
+<button nbButton status="warning" routerLink="/asb">Cancel</button>

@@ -1,0 +1,19 @@
+<nb-card size="giant">
+      <nb-card-header>
+       <input  type="text" nbInput placeholder="Search" style="width: 300px; margin-left: 20px">
+      </nb-card-header>
+      <nb-list>
+        <nb-list-item *ngFor="let sbu of datas">
+          	<b style="font-size: 19px">{{sbu.nama}}</b>
+    		<br>
+    		Kode : {{sbu.kode}}<br>
+		    Satuan : {{sbu.satuan}}<br>
+		    Harga Satuan : {{sbu.harga_final}}<br>
+		    Jumlah : <input  type="number" nbInput placeholder="qty" (input)='inputJumlahSBU($event)'  style="width: 65px;" ><br><br>
+		    <button nbButton size="small" status="info" (click)='pilihSBU(sbu.id)'>pilih</button>&nbsp;
+        </nb-list-item>
+      </nb-list>
+    </nb-card>
+
+<button nbButton status="primary" (click)=postHspkSbu() routerLink="/hspk/update/{{idparam}}" style="width: 100px">Save</button> &nbsp;  
+<button nbButton status="warning" routerLink="/hspk">Cancel</button>

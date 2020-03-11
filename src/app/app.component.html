@@ -1,0 +1,60 @@
+
+<nb-layout>
+ 
+  <nb-layout-header fixed *ngIf='status' >
+    <a  (click)="toggle()" style="color: white"><nb-icon icon="menu"></nb-icon></a>
+    <h1 style="color: #234a00"> sss</h1>
+    <a routerLink="/home"><img src="assets/img/logo.png"></a>
+    <h1 style="color: #234a00"> sss</h1>
+
+<!--     <nb-badge text="0" status="danger"></nb-badge> -->
+   <nb-icon icon="bell" style="color: white" (click)="toggleCompact()" ></nb-icon>
+  </nb-layout-header>
+  <nb-sidebar fixed tag="left" *ngIf='status' state="collapsed">
+     <nb-user size="large"
+             name={{nama}}
+             title={{hak_akses}}
+             color="#1361FE">
+    </nb-user>
+     <br>
+      
+    <button nbButton size="small" status="primary"  (click)="Logout()" >Logout</button> 
+    <br>
+    <br>
+    <nb-menu [items]="items" style='color: white'>
+    </nb-menu>
+    <br>
+    <br>
+    
+  </nb-sidebar>
+
+  <nb-sidebar fixed right tag="right" *ngIf='status' state="collapsed">
+    <div *ngFor="let data of datanotif">
+      <nb-card  *ngIf='data.tipe_notif=="VERIFIKASI"' status="success" >
+        <nb-card-header>{{data.tipe_notif}}</nb-card-header>
+        <nb-card-body >
+              {{data.isi_notif}}
+        </nb-card-body>
+      </nb-card>
+      <nb-card  *ngIf='data.tipe_notif=="PENOLAKAN"' status="danger" >
+        <nb-card-header>{{data.tipe_notif}}</nb-card-header>
+        <nb-card-body >
+              {{data.isi_notif}}
+        </nb-card-body>
+      </nb-card>
+      <nb-card  *ngIf='data.tipe_notif=="Perubahan Data"' status="info">
+        <nb-card-header>{{data.tipe_notif}}</nb-card-header>
+        <nb-card-body >
+              {{data.isi_notif}}
+        </nb-card-body>
+      </nb-card>
+      
+    </div>
+     
+   
+  </nb-sidebar>
+
+
+
+  <nb-layout-column class="colored-column-basic"><router-outlet></router-outlet></nb-layout-column>
+</nb-layout> 

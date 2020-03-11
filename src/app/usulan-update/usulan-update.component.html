@@ -1,0 +1,27 @@
+ <nb-card status="info">
+ 	  <nb-card-header>Edit Usulan</nb-card-header>
+      <nb-card-body class="example-items-rows">
+        Dinas : <input  type="text" nbInput value="{{dinas}}" disabled><br><br>
+        Tipe Usulan : <input  type="text" nbInput value="{{tipe}}" disabled><br><br>
+        Nama : <input type="text" nbInput (input)='inputNama($event)' value="{{nama}}" focus><br><br>
+        Merk : <input type="text" nbInput (input)='inputMerk($event)' value="{{merk}}"><br><br>
+        Spek : <input type="text" nbInput (input)='inputSpek($event)' value="{{spek}}"><br><br>
+        Satuan : <input type="text" nbInput (input)='inputSatuan($event)' value="{{satuan}}"><br><br>
+        Harga : <input type="text" nbInput (input)='inputHarga($event)' value="{{harga}}"><br><br>
+      </nb-card-body>
+ </nb-card>
+
+<button nbButton status="primary" (click)=action(dialog)>Save</button>   &nbsp; 
+<button nbButton status="warning" routerLink="/usulan/">Cancel</button>
+
+<ng-template #dialog let-data let-ref="dialogRef">
+      <nb-card status='warning'>
+        <nb-card-header>KESALAHAN DATA</nb-card-header>
+        <nb-card-body>Terjadi kesalahan pada penginputan data
+                    </nb-card-body>
+        <nb-card-footer>
+          
+          <button nbButton status='primary' (click)="ref.close()">Cancel</button>
+        </nb-card-footer>
+      </nb-card>
+    </ng-template>
